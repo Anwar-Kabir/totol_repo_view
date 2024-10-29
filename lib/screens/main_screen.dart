@@ -23,49 +23,100 @@ class MainScreen extends StatelessWidget {
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Padding(
-          padding:  const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-             const LabelWithAsterisk(labelText: "Github user name", isRequired: true,),
-              
-             
+              const LabelWithAsterisk(
+                labelText: "Github user name",
+                isRequired: true,
+              ),
+
+              // Container(
+              //   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              //   margin: const EdgeInsets.symmetric(vertical: 10),
+              //   decoration: BoxDecoration(
+              //     color: Colors.white,
+              //     borderRadius: BorderRadius.circular(12),
+              //     boxShadow: [
+              //       BoxShadow(
+              //         color: Colors.grey.withOpacity(0.2),
+              //         spreadRadius: 2,
+              //         blurRadius: 8,
+              //         offset: const Offset(0, 4),
+              //       ),
+              //     ],
+              //   ),
+              //   child: TextField(
+              //     controller: usernameController,
+              //     decoration: InputDecoration(
+              //       hintText: "Enter GitHub Username",
+              //       labelStyle: TextStyle(
+              //         fontSize: 16,
+              //         color: Colors.grey[700],
+              //       ),
+              //       border: const OutlineInputBorder(
+              //         borderSide: BorderSide.none,
+              //       ),
+              //       suffixIcon: IconButton(
+              //         icon: Icon(Icons.search,
+              //             color: Theme.of(context).primaryColor),
+              //         onPressed: () =>
+              //             controller.fetchRepositories(usernameController.text),
+              //       ),
+              //     ),
+              //   ),
+              // ),
+
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 margin: const EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.grey[850]
+                      : Colors.white,
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.2),
                       spreadRadius: 2,
                       blurRadius: 8,
-                      offset: const Offset(0, 4), 
+                      offset: const Offset(0, 4),
                     ),
                   ],
                 ),
                 child: TextField(
                   controller: usernameController,
+                  style: TextStyle(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : Colors.black,
+                  ),
                   decoration: InputDecoration(
                     hintText: "Enter GitHub Username",
-                    labelStyle: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey[700],
+                    hintStyle: TextStyle(
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.grey[400]
+                          : Colors.grey[700],
                     ),
                     border: const OutlineInputBorder(
                       borderSide: BorderSide.none,
                     ),
                     suffixIcon: IconButton(
-                      icon: Icon(Icons.search,
-                          color: Theme.of(context).primaryColor),
+                      icon: Icon(
+                        Icons.search,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Theme.of(context).primaryColor,
+                      ),
                       onPressed: () =>
                           controller.fetchRepositories(usernameController.text),
                     ),
                   ),
                 ),
               ),
-        
+
               const SizedBox(height: 10),
               Obx(() {
                 if (controller.isLoading.value) {
@@ -79,14 +130,14 @@ class MainScreen extends StatelessWidget {
                         style: const TextStyle(color: Colors.red),
                       ),
                       ElevatedButton(
-                        onPressed: () =>
-                            controller.fetchRepositories(usernameController.text),
+                        onPressed: () => controller
+                            .fetchRepositories(usernameController.text),
                         child: const Text('Retry'),
                       ),
                     ],
                   );
                 }
-        
+
                 // Only display total repository count if there are repositories fetched
                 return Expanded(
                   child: Column(
@@ -114,7 +165,8 @@ class MainScreen extends StatelessWidget {
                                     '${index + 1}',
                                     style: const TextStyle(color: Colors.white),
                                   ),
-                                  backgroundColor: Theme.of(context).primaryColor,
+                                  backgroundColor:
+                                      Theme.of(context).primaryColor,
                                 ),
                                 title: Text(repo.name),
                                 subtitle:
