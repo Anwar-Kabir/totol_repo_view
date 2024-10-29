@@ -4,6 +4,7 @@ import 'package:remote_task_git_api/model/repository_model.dart';
  
 
 class GitHubService {
+  //git hub api calling
   Future<List<Repository>> fetchRepositories(String username) async {
     final url = 'https://api.github.com/users/$username/repos';
     final response = await http.get(Uri.parse(url));
