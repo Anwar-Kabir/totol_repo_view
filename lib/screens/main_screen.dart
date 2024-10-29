@@ -31,43 +31,6 @@ class MainScreen extends StatelessWidget {
                 labelText: "Github user name",
                 isRequired: true,
               ),
-
-              // Container(
-              //   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              //   margin: const EdgeInsets.symmetric(vertical: 10),
-              //   decoration: BoxDecoration(
-              //     color: Colors.white,
-              //     borderRadius: BorderRadius.circular(12),
-              //     boxShadow: [
-              //       BoxShadow(
-              //         color: Colors.grey.withOpacity(0.2),
-              //         spreadRadius: 2,
-              //         blurRadius: 8,
-              //         offset: const Offset(0, 4),
-              //       ),
-              //     ],
-              //   ),
-              //   child: TextField(
-              //     controller: usernameController,
-              //     decoration: InputDecoration(
-              //       hintText: "Enter GitHub Username",
-              //       labelStyle: TextStyle(
-              //         fontSize: 16,
-              //         color: Colors.grey[700],
-              //       ),
-              //       border: const OutlineInputBorder(
-              //         borderSide: BorderSide.none,
-              //       ),
-              //       suffixIcon: IconButton(
-              //         icon: Icon(Icons.search,
-              //             color: Theme.of(context).primaryColor),
-              //         onPressed: () =>
-              //             controller.fetchRepositories(usernameController.text),
-              //       ),
-              //     ),
-              //   ),
-              // ),
-
               Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -116,7 +79,6 @@ class MainScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
               const SizedBox(height: 10),
               Obx(() {
                 if (controller.isLoading.value) {
