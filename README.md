@@ -13,7 +13,7 @@ As mention in the task, if provide git - user name, if its valid user, then show
 </p>
 
  
-[Download the APK](https://drive.google.com/file/d/1zQ3h2pJfj2OOMhxls-CIVetp7Hl7-wsI/view?usp=sharing)
+ 
 
 
 
